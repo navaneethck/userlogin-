@@ -5,7 +5,9 @@ const signup = async (req,res)=>{
        try{
               const{name,email,age,occupation,place,password}=req.body;
 
-              const hashedPassword = await argon2.hash(password)
+              const passString = password.toString(); 
+
+              const hashedPassword = await argon2.hash(passString)
 
               const newUser= new User({name,email,age,occupation,place,password:hashedPassword});
 

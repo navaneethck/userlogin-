@@ -12,7 +12,7 @@ const userLogin = async (req,res)=>{
                res.status(404).json({message:" user not found !",userDetails:req.body});
           }
           
-          const passwordMatch = await argon2.verify(user.password,password);
+          const passwordMatch = await argon2.verify(user.password,password.toString());
 
           if(!passwordMatch){
 
