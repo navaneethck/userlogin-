@@ -30,7 +30,7 @@ const Login = ()=>{
         <input
           id="email"
           type="email"
-          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text-black"
+          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text-black mt-8"
           placeholder="Enter your email"
         />
       </div>
@@ -42,21 +42,23 @@ const Login = ()=>{
         <input
           id="password"
           type="password"
-          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text-black"
+          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text- mt-8"
           placeholder="Enter your password"
         />
-
-        <a
-          href="#"
-          className="text-base text-gray-300 mt-4  hover:underline hover:text-gray-100 "
-        >
-          Forgot Password?
-        </a>
+     <div className="flex justify-between text-base text-gray-300 mt-4">
+          <a href="#" className="hover:underline hover:text-gray-100 ml-4">
+            Forgot Password?
+          </a>
+          <a href="/signup" className="hover:underline hover:text-gray-100 mr-5">
+            Sign Up?
+          </a>
+        </div>
+  
       </div>
      
       <button
         type="submit"
-        className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-md hover:bg-gray-200 mt-4"
+        className="bg-white text-blue-600 font-semibold py-2 px-4 rounded-md hover:bg-gray-200 mt-14"
       >
         Login
       </button>
