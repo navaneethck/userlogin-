@@ -1,6 +1,29 @@
+import React,{useState} from "react";
+import { userLogin } from "../../services/api";
 
 
 const Login = ()=>{
+  
+  const [formData,setFormData] = useState({email:"",password:""});
+  const [message,setMessage] = useState("");
+
+  const handleChange = (e)=>{
+    const {id,value} = e.target;
+    setFormData((prevData)=>({...prevData,[id]:value}));
+  }
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    try{
+
+      const response = await userLogin(formData)
+      setMessage(response.data.message)
+
+    }catch(error){
+      setMessage(error.response?.data?.message || 'login failed..!')
+    }
+  }
+  
     return(
       // <div className="flex items-center justify-center h-screen">
       // <div className="bg-blue-600 w-[400px]   h-[500px]  p-4 rounded-xl ">
@@ -21,7 +44,7 @@ const Login = ()=>{
       <h1>LOGIN</h1>
     </div>
     
-    <form className="text-white flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="text-white flex flex-col gap-6">
       
       <div className="flex flex-col">
         <label htmlFor="email" className="mb-1 text-sm font-thin">
@@ -30,8 +53,11 @@ const Login = ()=>{
         <input
           id="email"
           type="email"
+          value={formData.email}
+          onChange={handleChange}
           className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text-black mt-8"
           placeholder="Enter your email"
+         
         />
       </div>
      
@@ -42,6 +68,8 @@ const Login = ()=>{
         <input
           id="password"
           type="password"
+          value={formData.password}
+          onChange={handleChange}
           className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text- mt-8"
           placeholder="Enter your password"
         />
@@ -63,6 +91,7 @@ const Login = ()=>{
         Login
       </button>
     </form>
+    {message && <div className="mt-4 text-white text-center">{message}</div>}
   </div>
 </div>
 
