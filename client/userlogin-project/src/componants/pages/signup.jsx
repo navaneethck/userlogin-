@@ -23,8 +23,12 @@ const Signup =()=>{
        try{
           const response = await userSignup(formData);
           console.log('Frontend Response:', response);
+          
           setMessage(response.data.message);
           console.log('Message:', response.data.message);
+
+          setFormData({ name: '', email: '', password: '', age: '', occupation: '', place: '' });
+
        }catch(error){
           console.error('Error:', error);
           setMessage(error.response?.data?.message || 'signup failed ..!')

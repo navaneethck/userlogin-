@@ -19,12 +19,13 @@ const userLogin = async (req,res)=>{
                res.status(404).json({message:" password is not matching !"});
           }
 
-          Response.status(200).json({
+          res.status(200).json({
                message:"Logged in successfully!",userDetails:{name:user.name}
           })
      }catch(error){
 
           res.status(500).json({message:"an error occure during loggin",error:error.message})
+          console.log(error)
 
      }
 }

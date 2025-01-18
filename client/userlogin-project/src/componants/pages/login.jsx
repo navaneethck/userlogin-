@@ -17,7 +17,9 @@ const Login = ()=>{
     try{
 
       const response = await userLogin(formData)
-      setMessage(response.data.message)
+      setMessage(response.data.message);
+
+      setFormData({email:"",password:""});
 
     }catch(error){
       setMessage(error.response?.data?.message || 'login failed..!')
@@ -70,7 +72,7 @@ const Login = ()=>{
           type="password"
           value={formData.password}
           onChange={handleChange}
-          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text- mt-8"
+          className="p-2 rounded-md focus:outline-none focus:ring-4 focus:ring-blue-200 text-black mt-8"
           placeholder="Enter your password"
         />
      <div className="flex justify-between text-base text-gray-300 mt-4">
